@@ -21,6 +21,7 @@ namespace Baralho {
         int tempo;
         //Lista de botões
         List<Button> botoes = new List<Button>();
+        
 
 
         public Form1(string jogador1, string jogador2) {
@@ -81,12 +82,14 @@ namespace Baralho {
 
 
         private void button1_Click(object sender,EventArgs e) {
-            bool estaCadastrado = true;
-            if(jogadorLabel1.Text =="Jogador1" && jogadorLabel2.Text == "Jogador2") {
-                estaCadastrado = false;
-                Console.WriteLine(estaCadastrado);
+            bool estaCadastrado = false;          
+            if(jogadorLabel1.Text =="Jogador1" || jogadorLabel2.Text == "Jogador2") {
+                richTextBox1.Text = "Cadastre os jogadores!";
+                richTextBox2.Text = "Cadastre os jogadores!";
             }
-          
+            else{
+                 estaCadastrado = true;
+            } 
         }
         //Fecha o forms1 e abre o cadastro forms2
         private void button2_Click(object sender,EventArgs e) {
@@ -98,7 +101,7 @@ namespace Baralho {
         }
         //Troca o turno dos jogadores
         private void mudaTurnoJogadores(int turno) {
-            turnoJogadores = (turno > 0) ? turnoJogadores = 0 : turnoJogadores = 1;
+            turnoJogadores = (turno > 0) ? turnoJogadores = 0 : turnoJogadores = 1;            
             Console.WriteLine("É a vez do jogador {0}", turnoJogadores+1);
         }
         //Acrescenta os pontos dos jogadores
@@ -121,8 +124,38 @@ namespace Baralho {
             ColocaCartaAleatoria(valor,botao);
             mudaTurnoJogadores(turnoJogadores);
             acrescentaPontosJogadores(turnoJogadores,valor);
+            VerificaPontos(pontosJog1,pontosJog2);
             timer1.Start();
             tempo += 1;
+        }
+
+        private void VerificaPontos(int jogador1, int jogador2) {
+            if(jogador1 == 21) {
+                richTextBox1.Text = "O jogador: " + jogadorLabel1.Text + " pois bateu exatamente 21";
+                richTextBox2.Text = "O jogador: " + jogadorLabel1.Text + " pois bateu exatamente 21";
+            }
+            else if( jogador2 ==21) {
+                richTextBox1.Text = "O jogador: " + jogadorLabel2.Text + " pois bateu exatamente 21";
+                richTextBox2.Text = "O jogador: " + jogadorLabel2.Text + " pois bateu exatamente 21";
+            }else if( jogador1 >21 && jogador2 > 21) {
+                VerificaPontos21(jogador1,jogador2);
+            }
+            
+        }
+
+        private void VerificaPontos21(int valor1, int valor2) {
+            int pontos1 = valor1 - 21;
+            int pontos2 = valor2 - 21;
+            if(pontos1 < pontos2) {
+                richTextBox1.Text = "O jogador: " + jogadorLabel1.Text + " ganhou pois tem a pontuação" +
+                    " mais proxima de 21";
+            }else if(pontos2 < pontos1) {
+                richTextBox2.Text = "O jogador: " + jogadorLabel2.Text + " ganhou pois tem a pontuação" +
+                                    " mais proxima de 21";
+            }else if(pontos1 == pontos2) {
+                richTextBox1.Text = "Empate!";
+                richTextBox2.Text = "Empate!";
+            }
         }
         
             //Chama o forms 2
@@ -186,6 +219,10 @@ namespace Baralho {
                     bton.BackgroundImage = Properties.Resources.Verso;
                 }
             }
+        }
+
+        private void timer2_Tick(object sender,EventArgs e) {
+
         }
     }
 }

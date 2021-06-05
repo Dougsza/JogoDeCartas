@@ -163,7 +163,7 @@ namespace Baralho {
             // 
             // jogadorLabel1
             // 
-            this.jogadorLabel1.Location = new System.Drawing.Point(55, 72);
+            this.jogadorLabel1.Location = new System.Drawing.Point(73, 72);
             this.jogadorLabel1.Name = "jogadorLabel1";
             this.jogadorLabel1.Size = new System.Drawing.Size(51, 13);
             this.jogadorLabel1.TabIndex = 10;
@@ -172,7 +172,7 @@ namespace Baralho {
             // jogadorLabel2
             // 
             this.jogadorLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.jogadorLabel2.Location = new System.Drawing.Point(687, 72);
+            this.jogadorLabel2.Location = new System.Drawing.Point(669, 72);
             this.jogadorLabel2.Name = "jogadorLabel2";
             this.jogadorLabel2.Size = new System.Drawing.Size(51, 13);
             this.jogadorLabel2.TabIndex = 11;
@@ -180,17 +180,19 @@ namespace Baralho {
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(30, 106);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 80);
+            this.richTextBox1.Size = new System.Drawing.Size(136, 80);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(662, 106);
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Location = new System.Drawing.Point(626, 106);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(100, 80);
+            this.richTextBox2.Size = new System.Drawing.Size(136, 80);
             this.richTextBox2.TabIndex = 13;
             this.richTextBox2.Text = "";
             // 
@@ -205,7 +207,7 @@ namespace Baralho {
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
