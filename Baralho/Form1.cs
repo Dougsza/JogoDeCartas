@@ -91,6 +91,7 @@ namespace Baralho {
                  estaCadastrado = true;
             } 
         }
+
         //Fecha o forms1 e abre o cadastro forms2
         private void button2_Click(object sender,EventArgs e) {
             this.Close();
@@ -99,24 +100,27 @@ namespace Baralho {
             cadastro.Start();      
         
         }
+
         //Troca o turno dos jogadores
         private void mudaTurnoJogadores(int turno) {
             turnoJogadores = (turno > 0) ? turnoJogadores = 0 : turnoJogadores = 1;            
             Console.WriteLine("É a vez do jogador {0}", turnoJogadores+1);
         }
+
         //Acrescenta os pontos dos jogadores
         private void acrescentaPontosJogadores(int turno, int valor) {
-            if(turno > 0) {
-                pontosJog2 += valor;
-                richTextBox2.Text = "Pontuação atual: \n\n";
-                richTextBox2.AppendText("Pontos: "+pontosJog2);
-            }
-            else {
+            if(turno == 0) {
                 pontosJog1 += valor;
-                richTextBox1.Text = "Pontuação atual:\n\n ";
-                richTextBox1.AppendText("Pontos: " + pontosJog1);
+                richTextBox1.Text = "Pontuação atual: \n\n";
+                richTextBox1.AppendText("Pontos: "+pontosJog1);
+            }
+            else if(turno >0) {
+                pontosJog2 += valor;
+                richTextBox2.Text = "Pontuação atual:\n\n ";
+                richTextBox2.AppendText("Pontos: " + pontosJog2);
             }
         }
+
         //Faz com que todas as funções sejam executadas para não ocupar muito espaço
         private void Inicializacao(Button botao) {
             valor = rnd.Next(1,10);
@@ -128,6 +132,7 @@ namespace Baralho {
             timer1.Start();
             tempo += 1;
         }
+        //Verifica se os pontos deram 21 ou maior
 
         private void VerificaPontos(int jogador1, int jogador2) {
             if(jogador1 == 21) {
@@ -148,10 +153,10 @@ namespace Baralho {
             int pontos2 = valor2 - 21;
             if(pontos1 < pontos2) {
                 richTextBox1.Text = "O jogador: " + jogadorLabel1.Text + " ganhou pois tem a pontuação" +
-                    " mais proxima de 21";
+                    " mais proxima de 21\n\nPontos: "+valor1;
             }else if(pontos2 < pontos1) {
                 richTextBox2.Text = "O jogador: " + jogadorLabel2.Text + " ganhou pois tem a pontuação" +
-                                    " mais proxima de 21";
+                                    " mais proxima de 21\n\nPontos: "+valor2;
             }else if(pontos1 == pontos2) {
                 richTextBox1.Text = "Empate!";
                 richTextBox2.Text = "Empate!";
